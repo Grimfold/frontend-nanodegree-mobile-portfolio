@@ -32,7 +32,7 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 #### Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
@@ -53,3 +53,32 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 
 * <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
 * <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+
+## Submission Readme
+
+### Manual ngrok
+* Install ngrok (platform specific - as per **Part 1** above). On my PC, results in the following file in my top level directory:
+```
+ngrok.exe
+```
+* no need to specifically exclude this via `.gitignore` *(other ways to exclude files from repository exist)* as global exclude rule in place for executables as evidenced by:
+```
+$ git check-ignore -v -- ngrok.exe
+"C:\\Users\\Mark\\Documents\\gitignore_global.txt":6:*.exe      ngrok.exe
+```
+* start a web server in same directory as index.html:
+```
+$ python -m http.server 8080 &
+```
+*note I have python 3 installed, hence the syntax change from **Part 1** above*. `&` used to run task in background (otherwise need multiple command windows)
+* run ngrok
+```
+$> ./ngrok http 8080 &
+```
+* navigate to localhost:4040 to see the ngrok URL required for PageSpeed Insights
+
+*(At this stage, it was clear that I'm far too lazy to do this time every time I make a modification, so ...)*
+
+### Saner workflow
+
+* setup grunt as per (http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
